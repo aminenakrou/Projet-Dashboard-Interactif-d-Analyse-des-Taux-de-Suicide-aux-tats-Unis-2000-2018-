@@ -1,0 +1,62 @@
+name: Deploy dashboard site
+
+on:
+  push:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Préparer le site
+        shell: bash
+        run: |
+          set -e
+
+          mkdir -p site
+          cp -r css site/
+          cp -r js site/
+          cp -r img site/
+          cp -r data site/
+          cp -r Leaflet site/
+
+          cp accueil.html site/accueil.html
+          cp analyse.html site/analyse.html
+          cp indicateurs.html site/indicateurs.html
+
+          cp accueil.html site/index.html
+
+          touch site/.nojekyll
+
+          echo "Contenu du site prêt au déploiement :"
+          find site -maxdepth 3 -type f | sort
+
+      - name: Configurer GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Uploader l'artifact Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./site
+
+      - name: Déployer sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
