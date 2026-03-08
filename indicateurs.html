@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Indicateurs - Suicide aux États-Unis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Indicateurs clés pour l'analyse du suicide aux États-Unis (2000-2018).">
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/plotly-2.18.0.min.js"></script>
+    <script src="js/cytoscape.min.js"></script>
+    <script src="js/dagre.min.js"></script>
+    <script src="js/cytoscape-dagre.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="Leaflet/leaflet.css" />
+    <script src="Leaflet/leaflet.js"></script>
+    <script src="js/js-fluid-meter.js"></script>
+
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .indicator-card {
+        height: 100%;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        transition: transform 0.3s;
+      }
+      .indicator-card:hover {
+        transform: translateY(-3px);
+      }
+      h1, h2 {
+        color: #2c3e50;
+      }
+      h1 {
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 0.75rem;
+      }
+      .navbar {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
+      }
+      .card-icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="accueil.html">
+          <img src="img/logo_ecole.png" alt="Logo Ecole" style="height: 40px;" />
+          <span class="fw-bold">Tableau de Bord : Suicide aux États-Unis</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="accueil.html">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link active" href="indicateurs.html">Indicateurs</a></li>
+            <li class="nav-item"><a class="nav-link" href="analyse.html">Analyse</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="text-center">Indicateurs Clés de Suivi</h1>
+      <p class="lead text-center mb-5">Ces indicateurs permettent de suivre et d'analyser l'évolution des taux de suicide aux États-Unis entre 2000 et 2018.</p>
+
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="border rounded-3 m-2 p-4 indicator-card">
+            <div class="text-center card-icon">
+              <i class="bi bi-graph-up"></i>
+            </div>
+            <h2 class="text-center mb-3">Taux de suicide global</h2>
+            <p>Cet indicateur présente le taux de suicide pour 100 000 habitants aux États-Unis pour chaque année de la période étudiée. Il permet d'observer l'évolution générale du phénomène et d'identifier les années critiques.</p>
+            <p class="text-muted"><strong>Représentation sur la page d'accueil :</strong> Nuage de points montrant l'évolution du taux global par année.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="border rounded-3 m-2 p-4 indicator-card">
+            <div class="text-center card-icon">
+              <i class="bi bi-arrow-up-right"></i>
+            </div>
+            <h2 class="text-center mb-3">Variation annuelle</h2>
+            <p>Cet indicateur mesure le pourcentage de variation du taux de suicide d'une année à l'autre. Il permet d'identifier les périodes d'accélération ou de ralentissement du phénomène et les points d'inflexion dans la tendance générale.</p>
+            <p class="text-muted"><strong>Représentation sur la page d'accueil :</strong> Graphique en barres montrant la variation en pourcentage entre chaque année consécutive.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="border rounded-3 m-2 p-4 indicator-card">
+            <div class="text-center card-icon">
+              <i class="bi bi-gender-ambiguous"></i>
+            </div>
+            <h2 class="text-center mb-3">Répartition par sexe</h2>
+            <p>Cet indicateur compare les taux de suicide entre hommes et femmes. Elle révèle des disparités importantes qui peuvent orienter les politiques de prévention ciblées et met en évidence des facteurs de risque spécifiques à chaque sexe.</p>
+            <p class="text-muted"><strong>Représentation sur la page d'accueil :</strong> Camembert présentant la répartition moyenne par sexe sur l'ensemble de la période, avec option de filtrage par genre, qui se transforme en nuage de points pour suivre l'évolution temporelle du genre sélectionné.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="border rounded-3 m-2 p-4 indicator-card">
+            <div class="text-center card-icon">
+              <i class="bi bi-people"></i>
+            </div>
+            <h2 class="text-center mb-3">Répartition par âge</h2>
+            <p>Cet indicateur analyse les taux de suicide par tranche d'âge, permettant d'identifier les populations les plus vulnérables. Il offre également la possibilité d'explorer l'évolution du taux pour une tranche d'âge spécifique au fil du temps.</p>
+            <p class="text-muted"><strong>Représentation sur la page d'accueil :</strong> Camembert avec option de filtrage par tranche d'âge, qui se transforme en nuage de points pour suivre l'évolution temporelle d'un groupe d'âge sélectionné.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="border rounded-3 m-2 p-4 indicator-card">
+            <div class="text-center card-icon">
+              <i class="bi bi-globe"></i>
+            </div>
+            <h2 class="text-center mb-3">Répartition par origine</h2>
+            <p>Cet indicateur examine les différences de taux de suicide entre les groupes ethniques aux États-Unis. Il met en lumière des disparités qui peuvent être liées à des facteurs socio-économiques, culturels ou d'accès aux soins de santé mentale.</p>
+            <p class="text-muted"><strong>Représentation sur la page d'accueil :</strong> Camembert présentant la répartition moyenne par origine ethnique sur l'ensemble de la période étudiée, avec option de filtrage par origine qui se transforme en nuage de points pour suivre l'évolution temporelle de l'origine sélectionnée.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="alert alert-info mt-5">
+        <h4><i class="bi bi-info-circle me-2"></i>Note méthodologique</h4>
+        <p class="mb-0">Les taux sont calculés pour 100 000 habitants. Les données sont issues des Centers for Disease Control and Prevention (CDC) et couvrent la période 2000-2018. La moyenne des taux est calculée sur l'ensemble de la période pour les graphiques de répartition.</p>
+      </div>
+
+
+      <footer class="text-center text-muted py-4 mt-5 border-top">
+        <p class="mb-1">Tableau de bord créé pour l'analyse des données sur le suicide aux États-Unis (2000-2018)</p>
+        <p class="mb-0">Source : Centers for Disease Control and Prevention (CDC)</p>
+      </footer>
+    </div>
+
+
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

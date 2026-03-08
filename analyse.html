@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Analyse - Suicide aux États-Unis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Analyse approfondie des données sur le suicide aux États-Unis (2000-2018).">
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/plotly-2.18.0.min.js"></script>
+    <script src="js/cytoscape.min.js"></script>
+    <script src="js/dagre.min.js"></script>
+    <script src="js/cytoscape-dagre.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="Leaflet/leaflet.css" />
+    <script src="Leaflet/leaflet.js"></script>
+    <script src="js/js-fluid-meter.js"></script>
+
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .analysis-section {
+        margin-bottom: 40px;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        transition: transform 0.3s;
+      }
+      .analysis-section:hover {
+        transform: translateY(-3px);
+      }
+      h1, h2, h3 {
+        color: #2c3e50;
+      }
+      h1 {
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 0.75rem;
+      }
+      .highlight {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-left: 4px solid #3498db;
+        margin: 15px 0;
+      }
+      .navbar {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
+      }
+      .key-figure {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="accueil.html">
+          <img src="img/logo_ecole.png" alt="Logo Ecole" style="height: 40px;" />
+          <span class="fw-bold">Tableau de Bord : Suicide aux États-Unis</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="accueil.html">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="indicateurs.html">Indicateurs</a></li>
+            <li class="nav-item"><a class="nav-link active" href="analyse.html">Analyse</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="text-center">Analyse des indicateurs</h1>
+      <p class="lead text-center mb-5">Cette page propose une analyse approfondie des principaux indicateurs liés au suicide aux États-Unis entre 2000 et 2018.</p>
+
+
+      <div class="row analysis-section border rounded-3 m-2 p-4">
+        <div class="col-12">
+          <h2 class="mb-4"><i class="bi bi-graph-up me-2"></i>1. Evolution du taux de suicide (2000-2018)</h2>
+        </div>
+        <div class="col-md-5">
+          <img src="img/capture1.png" alt="Évolution du taux de suicide global" class="img-fluid mb-3 border rounded" />
+        </div>
+        <div class="col-md-7">
+          <h3 class="mb-3">Analyse de l'évolution temporelle</h3>
+          <p>
+            L'analyse du taux de suicide global aux États-Unis entre 2000 et 2018 révèle une <strong>tendance à la hausse significative</strong>, particulièrement prononcée à partir de 2007-2008, coïncidant avec la crise économique mondiale.
+          </p>
+          <p>
+            On observe trois phases distinctes :
+          </p>
+          <ul>
+            <li><strong>2000-2006</strong> : Le taux reste assez stable, avec environ 10 à 11 cas pour 100 000 habitants.</li>
+            <li><strong>2007-2014</strong> : Accélération progressive avec une augmentation annuelle de 2% en moyenne</li>
+            <li><strong>2015-2018</strong> : L'augmentation se fait plus marquée et le taux dépasse 14 cas pour 100 000 habitants. </li>
+          </ul>
+          <div class="highlight">
+            <p class="mb-0">
+              <i class="bi bi-exclamation-triangle me-2"></i> <span class="key-figure">Augmentation de près de 30%</span> du taux de suicide sur l'ensemble de la période, signalant une crise de santé publique majeure nécessitant des interventions ciblées.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row analysis-section border rounded-3 m-2 p-4">
+           <div class="col-12">
+                <h2 class="mb-4"><i class="bi bi-arrow-up-right me-2"></i>2. Variations annuelles </h2>
+           </div>
+           <div class="col-md-7">
+                <h3 class="mb-3">Analyse des variations</h3>
+                <p>
+                L'analyse du graphique d'évolution du taux de suicide repose sur la formule suivante :
+                <br>
+                <em>Variation (%) = [(Taux de l'année actuelle – Taux de l'année précédente) / Taux de l'année précédente] × 100</em>.
+                </p>
+                <p>
+                Cette approche met en lumière les variations annuelles en pourcentage. Les barres positives indiquent une augmentation du taux de suicide par rapport à l'année précédente, tandis que les barres négatives traduisent une baisse relative.
+                </p>
+                <div class="highlight">
+                     <p class="mb-0">
+                          <i class="bi bi-exclamation-triangle me-2"></i> <span class="key-figure">Ces fluctuations, qu'elles soient ascendantes ou descendantes,</span> peuvent refléter l'impact de facteurs socio-économiques ou l'influence des politiques de santé publique mises en œuvre au fil du temps.
+                     </p>
+                </div>
+          </div>
+          <div class="col-md-5">
+               <img src="img/capture2.png" alt="Variations annuelles du taux de suicide" class="img-fluid mb-3 border rounded" />
+          </div>
+      </div>
+
+
+
+      <div class="row analysis-section border rounded-3 m-2 p-4">
+        <div class="col-12">
+          <h2 class="mb-4"><i class="bi bi-gender-ambiguous me-2"></i>3. Disparités entre hommes et femmes</h2>
+        </div>
+        <div class="col-md-5">
+          <img src="img/capture3.png" alt="Répartition par sexe" class="img-fluid mb-3 border rounded" />
+        </div>
+        <div class="col-md-7">
+          <h3 class="mb-3">Analyse des différences de genre</h3>
+          <p>
+            La répartition par sexe révèle une <strong>disproportion significative</strong> entre hommes et femmes. Les hommes représentent approximativement 75-80% des suicides, un ratio qui reste relativement stable sur la période étudiée.
+          </p>
+          <p>
+            Cette disparité peut s'expliquer par plusieurs facteurs :
+          </p>
+          <ul>
+            <li>Les méthodes utilisées, généralement plus létales chez les hommes</li>
+            <li>Les différences dans les comportements de recherche d'aide et d'expression de la détresse psychologique</li>
+            <li>Les pressions socioculturelles liées aux rôles de genre</li>
+          </ul>
+          <div class="highlight">
+            <p class="mb-0">
+              <i class="bi bi-search me-2"></i> Bien que les <span class="key-figure">tentatives de suicide soient plus nombreuses chez les femmes</span>, le taux de suicide accompli est significativement plus élevé chez les hommes, soulignant la nécessité d'approches de prévention différenciées.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row analysis-section border rounded-3 m-2 p-4">
+        <div class="col-12">
+          <h2 class="mb-4"><i class="bi bi-people me-2"></i>4. Vulnérabilité selon les tranches d'âge</h2>
+        </div>
+        <div class="col-md-7">
+          <h3 class="mb-3">Analyse démographique</h3>
+          <p>
+            L'analyse par tranche d'âge montre que <strong>certains groupes sont particulièrement vulnérables</strong>. Les données révèlent que les personnes d'âge moyen (45-64 ans) et les personnes âgées (65+ ans) présentent généralement les taux les plus élevés.
+          </p>
+          <p>
+            Cependant, l'évolution la plus préoccupante concerne les jeunes (15-24 ans) et les jeunes adultes (25-44 ans), qui ont connu les augmentations les plus importantes en termes de pourcentage sur la période étudiée.
+          </p>
+          <p>
+            Cette tendance chez les plus jeunes pourrait être liée à l'augmentation de l'utilisation des réseaux sociaux, l'isolement social, les pressions académiques et professionnelles accrues, ainsi que l'accès limité aux services de santé mentale.
+          </p>
+          <div class="highlight">
+            <p class="mb-0">
+              <i class="bi bi-graph-up-arrow me-2"></i> <span class="key-figure">L'augmentation de plus de 50%</span> du taux de suicide chez les 15-24 ans entre 2007 et 2018 constitue un signal d'alarme majeur pour les politiques de santé publique.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <img src="img/capture4.png" alt="Répartition par tranche d'âge" class="img-fluid mb-3 border rounded" />
+        </div>
+      </div>
+
+
+
+      <div class="row analysis-section border rounded-3 m-2 p-4">
+        <div class="col-12">
+          <h2 class="mb-4"><i class="bi bi-globe me-2"></i>5. Disparités selon l'origine ethnique</h2>
+        </div>
+        <div class="col-md-5">
+          <img src="img/capture5.png" alt="Répartition par origine ethnique" class="img-fluid mb-3 border rounded" />
+        </div>
+        <div class="col-md-7">
+          <h3 class="mb-3">Analyse des facteurs culturels et sociaux</h3>
+          <p>
+            La répartition par origine ethnique révèle des <strong>disparités importantes</strong> qui peuvent refléter des différences dans l'accès aux soins de santé mentale, le soutien communautaire, les facteurs économiques et les normes culturelles.
+          </p>
+          <p>
+            Les populations blanches non hispaniques présentent généralement les taux les plus élevés, suivies par les populations amérindiennes et autochtones d'Alaska, qui sont particulièrement touchées dans certaines régions.
+          </p>
+          <p>
+            Les populations afro-américaines, hispaniques et asiatiques présentent des taux significativement plus bas en moyenne, bien que des variations importantes existent au sein de ces groupes.
+          </p>
+          <div class="highlight">
+            <p class="mb-0">
+              <i class="bi bi-pin-map me-2"></i> Ces différences soulignent l'importance de <span class="key-figure">programmes de prévention culturellement adaptés</span> et de recherches supplémentaires sur les facteurs protecteurs spécifiques à certaines communautés.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row border rounded-3 m-2 p-4 bg-light">
+        <div class="col-12">
+          <h2 class="mb-3"><i class="bi bi-check-circle me-2"></i>Conclusion et perspectives</h2>
+          <p>
+            L'analyse des données sur le suicide aux États-Unis entre 2000 et 2018 met en évidence une <strong>augmentation préoccupante</strong> du phénomène, avec des disparités importantes selon le sexe, l'âge et l'origine ethnique.
+          </p>
+          <p>
+            Ces résultats suggèrent la nécessité de:
+          </p>
+          <ul>
+            <li>Renforcer les programmes de prévention ciblés pour les groupes les plus à risque</li>
+            <li>Améliorer l'accès aux services de santé mentale, particulièrement dans les zones rurales et les communautés défavorisées</li>
+            <li>Développer des approches spécifiques pour les hommes, qui sont moins susceptibles de chercher de l'aide</li>
+            <li>Mettre en place des initiatives dédiées aux jeunes, notamment dans les milieux scolaires et universitaires</li>
+            <li>Poursuivre la recherche sur les facteurs de risque et de protection spécifiques à chaque groupe démographique</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <footer class="text-center text-muted py-4 mt-5 border-top">
+        <p class="mb-1">Tableau de bord créé pour l'analyse des données sur le suicide aux États-Unis (2000-2018)</p>
+        <p class="mb-0">Source : Centers for Disease Control and Prevention (CDC)</p>
+      </footer>
+    </div>
+
+
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
